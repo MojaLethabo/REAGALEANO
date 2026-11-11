@@ -79,6 +79,9 @@ CREATE TABLE IF NOT EXISTS job_checks(
   id INTEGER PRIMARY KEY, job_id INTEGER NOT NULL REFERENCES jobs(id) ON DELETE CASCADE,
   label TEXT NOT NULL, done INTEGER NOT NULL DEFAULT 0);
 CREATE TABLE IF NOT EXISTS settings(key TEXT PRIMARY KEY, value TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS projects(
+  id INTEGER PRIMARY KEY, title TEXT NOT NULL, client TEXT NOT NULL DEFAULT '', category TEXT NOT NULL DEFAULT '',
+  photo TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT (datetime('now')));
 `;
 
 // Starter price list. Cost and markup are editable in the owner panel.

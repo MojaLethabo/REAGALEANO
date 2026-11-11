@@ -13,7 +13,7 @@ export default async function OwnerLayout({ children }: { children: React.ReactN
         <div className="sidelabel">MAIN</div>
         <PanelNav links={[
           ["/owner", "Dashboard", "home"], ["/owner/requests", "Requests", "inbox"], ["/owner/quotes", "Quotations", "doc"],
-          ["/owner/jobs", "Jobs", "job"], ["/owner/analytics", "Analytics", "chart"], ["/owner/prices", "Products & Services", "tag"],
+          ["/owner/jobs", "Jobs", "job"], ["/owner/analytics", "Analytics", "chart"], ["/owner/prices", "Products & Services", "tag"], ["/owner/projects", "Projects", "photo"],
           ["/owner/technicians", "Technicians", "users"], ["/owner/settings", "Settings", "cog"],
         ]} />
         <div className="who">

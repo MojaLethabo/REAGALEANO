@@ -4,7 +4,7 @@ One Next.js 16 (App Router, TypeScript) project with three surfaces on one backe
 
 | Surface | URL | Who |
 |---|---|---|
-| Public website: Home, About us, Services, Contact us (request form) | `/`, `/about`, `/services`, `/contact` | Clients |
+| Public website: Home, About us, Services, Projects (appears once the owner adds one), Contact us (request form) | `/`, `/about`, `/services`, `/projects`, `/contact` | Clients |
 | Owner panel: requests inbox, price list, quote builder + PDF, jobs, technicians, analytics, settings | `/owner/...` | Owner |
 | Technician app (mobile-first, deliberately minimal): the jobs allocated to them, with the client's address and phone (Call / WhatsApp / Navigate), scope, materials, and Mark complete | `/tech/...` | Technicians |
 | Staff login / forced password change | `/login`, `/account/password` | Staff |
@@ -32,6 +32,18 @@ Client submits the Contact form → owner sees it in **Requests** (email notific
 **Issue** (locks it) → **Preview / download PDF** (browser print → Save as PDF) → owner sends it himself →
 **Mark accepted** → a job is created (materials copied **without prices**, client address and phone copied across from the request or quote) →
 owner **assigns a technician** → the technician opens the job on their phone, calls or navigates to the client, and marks it complete. Only the owner can reopen a job.
+
+## Public website
+
+Structure inspired by established electrical-contractor sites: an info bar (call number, 24-hour support, optional office hours, Contact now),
+a rotating hero with a call to action, audience tiles, a highlights strip, a services grid, a project gallery, brands, how-it-works, FAQ and an
+appointment form. Nothing is invented: the highlights strip starts with facts from the company profile (registered 2016, Level 1 B-BBEE, 135%
+procurement recognition, 24-hour support) and the owner replaces or adds real numbers under **Settings → Public website**. The gallery and brands
+sections only appear once the owner adds **Projects** (with photo upload) or brands. The website phone number and email are separate from the quote
+letterhead, so the two can differ.
+
+Photo uploads: JPG/PNG/WebP up to 5 MB, type checked from the file bytes (SVG and renamed files are rejected), stored under `data/uploads`
+(or `UPLOAD_DIR`) with random names and served with long-term caching; images are resized by Next.js when shown.
 
 ## Quote builder, analytics and settings
 

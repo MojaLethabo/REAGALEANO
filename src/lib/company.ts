@@ -3,6 +3,7 @@ import { db } from "./db";
 export const SETTING_KEYS = [
   "legal", "trading", "tagline", "reg", "address", "phone", "email", "website", "brand",
   "bankAccountName", "bankName", "bankAccountNumber", "bankAccountType", "terms", "validDays",
+  "sitePhone", "siteEmail", "hours", "stats", "brands",
 ] as const;
 export type Settings = Record<(typeof SETTING_KEYS)[number], string>;
 
@@ -26,6 +27,12 @@ function defaults(): Settings {
     terms:
       "Pricing is based on the stated scope and quantities.\nAny additional materials or work identified after inspection of the existing installation will be quoted separately.\nEquipment remains the property of Reagaleano until paid in full.",
     validDays: "14",
+    // Public website (not the quote letterhead): shown in the header, footer and contact page.
+    sitePhone: "062 375 0851",
+    siteEmail: "admin@reagaleano.co.za",
+    hours: "",
+    stats: "2016|Company registered\nLevel 1|B-BBEE contributor\n135%|Procurement recognition\n24-hour|Support",
+    brands: "",
   };
 }
 

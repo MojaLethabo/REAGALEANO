@@ -3,6 +3,7 @@ import { headers } from "next/headers";
 import { db } from "@/lib/db";
 import { limited } from "@/lib/auth";
 import { notifyOwner } from "@/lib/notify";
+import { company } from "@/lib/company";
 import { PROPERTY_TYPES, REQUEST_KINDS, SERVICE_NAMES } from "@/lib/content";
 
 export type FormState = { ok: boolean; error?: string; name?: string };
@@ -13,7 +14,7 @@ export async function submitRequest(_prev: FormState, fd: FormData): Promise<For
   if (clip(fd.get("website"), 50)) return { ok: true }; // honeypot: silently accept
   const h = await headers();
   const ip = (h.get("x-forwarded-for") || "local").split(",")[0].trim();
-  if (limited("req:" + ip, 5, 60 * 60 * 1000)) return { ok: false, error: "Too many requests. Please call 062 375 0851." };
+  if (limited("req:" + ip, 5, 60 * 60 * 1000)) return { ok: false, error: `Too many requests. Please call ${company().sitePhone}.` };
 
   const phone = clip(fd.get("phone"), 30);
   if (phone.replace(/\D/g, "").length < 9) return { ok: false, error: "Please enter a valid phone number." };

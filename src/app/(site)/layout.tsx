@@ -1,25 +1,39 @@
 import Link from "next/link";
 import NavLinks from "@/components/NavLinks";
+import { company } from "@/lib/company";
+import { db } from "@/lib/db";
+import { SERVICES } from "@/lib/content";
+import { telHref, whatsappHref } from "@/lib/phone";
+
+export const dynamic = "force-dynamic"; // reads settings and projects from the database
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
+  const co = company();
+  const hasProjects = !!db().prepare("SELECT 1 FROM projects LIMIT 1").get();
+  const links: [string, string][] = [["/", "Home"], ["/about", "About us"], ["/services", "Services"], ...(hasProjects ? ([["/projects", "Projects"]] as [string, string][]) : []), ["/contact", "Contact us"]];
+  const ld = { "@context": "https://schema.org", "@type": "LocalBusiness", name: "Reagaleano Electrical and Systems", telephone: co.sitePhone, email: co.siteEmail, areaServed: "Gauteng, South Africa" };
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld).replace(/</g, "\\u003c") }} />
       <div className="util"><div className="wrap">
-        <span>24-hour support: <a href="tel:+27623750851"><b>062 375 0851</b></a></span>
-        <span>B-BBEE Level 1 · CSD registered supplier</span>
+        <span>Call now: <a href={telHref(co.sitePhone)}><b>{co.sitePhone}</b></a></span>
+        <span>24-hour support{co.hours ? ` · ${co.hours}` : ""}</span>
+        <Link className="utilbtn" href="/contact">Contact now</Link>
       </div></div>
       <header className="top"><div className="wrap">
         <Link className="brand" href="/"><span className="mk" aria-hidden="true">R</span><span><b>REAGALEANO</b><small>Electrical and Systems</small></span></Link>
-        <NavLinks />
+        <NavLinks links={links} />
         <Link className="btn sm" href="/contact">Request a quote</Link>
       </div></header>
       <main>{children}</main>
-      <footer><div className="wrap">
-        <div><b>REAGALEANO</b> Electrical and Systems<small>Reg. 2016/524578/07 · CSD MAAA1753516 · B-BBEE Level 1</small></div>
-        <div><small>062 375 0851 · admin@reagaleano.co.za</small><small><Link href="/login">Staff login</Link></small></div>
+      <footer><div className="wrap fgrid">
+        <div><b>REAGALEANO</b> Electrical and Systems<small>Electronic security, access control, networking, automation and solar backup power for residential, commercial and industrial properties.</small><small>Reg. 2016/524578/07 · CSD MAAA1753516 · B-BBEE Level 1</small></div>
+        <div><h4>Our services</h4>{SERVICES.slice(0, 6).map((s) => <small key={s.name}><Link href={`/contact?service=${encodeURIComponent(s.name)}`}>{s.name}</Link></small>)}</div>
+        <div><h4>Support</h4><small>24-hour support</small>{co.hours && <small>Office: {co.hours}</small>}</div>
+        <div><h4>Contact</h4><small><a href={telHref(co.sitePhone)}>{co.sitePhone}</a></small><small><a href={`mailto:${co.siteEmail}`}>{co.siteEmail}</a></small><small><Link href="/login">Staff login</Link></small></div>
       </div></footer>
       <nav className="mbar" aria-label="Quick contact">
-        <a href="tel:+27623750851">Call</a><a href="https://wa.me/27623750851">WhatsApp</a><Link className="p" href="/contact">Get a quote</Link>
+        <a href={telHref(co.sitePhone)}>Call</a><a href={whatsappHref(co.sitePhone)}>WhatsApp</a><Link className="p" href="/contact">Get a quote</Link>
       </nav>
     </>
   );

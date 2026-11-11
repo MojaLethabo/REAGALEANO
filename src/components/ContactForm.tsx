@@ -3,7 +3,7 @@ import { useActionState } from "react";
 import { submitRequest, type FormState } from "@/app/actions/request";
 import { PROPERTY_TYPES, REQUEST_KINDS, SERVICE_NAMES } from "@/lib/content";
 
-export default function ContactForm({ compact = false, defaultService = "CCTV surveillance" }: { compact?: boolean; defaultService?: string }) {
+export default function ContactForm({ compact = false, defaultService = "CCTV surveillance", phone = "" }: { compact?: boolean; defaultService?: string; phone?: string }) {
   const [s, action, pending] = useActionState<FormState, FormData>(submitRequest, { ok: false });
   const svc = SERVICE_NAMES.includes(defaultService) ? defaultService : "CCTV surveillance";
 
@@ -12,7 +12,7 @@ export default function ContactForm({ compact = false, defaultService = "CCTV su
       <div role="status">
         <div className="note ok">
           <b>{compact ? "Request received." : `Thank you${s.name && s.name !== "Call-back request" ? ", " + s.name : ""}.`}</b>{" "}
-          We have received your request and will call you back to arrange a site assessment. For urgent faults call 062 375 0851.
+          We have received your request and will call you back to arrange a site assessment. For urgent faults call {phone || "us"}.
         </div>
       </div>
     );

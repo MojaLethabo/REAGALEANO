@@ -17,6 +17,15 @@ export default function Settings() {
           <div className="g2">{f("reg", "Registration number")}{f("address", "Address")}</div>
           <div className="g3">{f("phone", "Phone")}{f("email", "Email", { type: "email" })}{f("website", "Website")}</div>
         </div>
+        <div className="card"><h3>Public website</h3>
+          <p className="muted">What visitors see in the header, footer, contact page and home page. Leave the hours blank if you would rather not show them.</p>
+          <div className="g3">{f("sitePhone", "Phone / WhatsApp number")}{f("siteEmail", "Email", { type: "email" })}{f("hours", "Business hours (optional)")}</div>
+          <label>Highlights strip (one per line: value | label)</label>
+          <textarea name="stats" defaultValue={c.stats} style={{ minHeight: 110 }} />
+          <p className="muted"><small>Add real numbers only, for example &quot;120|Installations completed&quot;. Do not estimate.</small></p>
+          <label>Brands you install (comma separated, optional)</label>
+          <input name="brands" defaultValue={c.brands} placeholder="e.g. Hikvision, Nemtek, Victron" />
+        </div>
         <div className="card"><h3>Branding</h3>
           <label>Brand colour (quote header and headings)</label>
           <input name="brand" type="color" defaultValue={c.brand} style={{ width: 90, height: 42, padding: 2 }} />
