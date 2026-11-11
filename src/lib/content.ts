@@ -10,7 +10,7 @@ export const SERVICES: { name: string; cat: Cat; short: string; long: string; ic
   { name: "Access control and biometrics", cat: "s", icon: "lock", short: "Fingerprint, face, cards and keypads.", long: "Fingerprint readers, facial recognition, cards, tags and keypads for residents, employees and visitors, with permissions set up for your site." },
   { name: "Security alarms and intercoms", cat: "s", icon: "bell", short: "Sensors, sirens and visitor intercoms.", long: "Door contacts, motion detectors, sirens and visitor intercoms, installed, repaired and maintained with battery backup." },
   { name: "Networking and Wi-Fi", cat: "s", icon: "wifi", short: "Cabling, switches, routers and Wi-Fi.", long: "Structured cabling, data points, switches, routers and Wi-Fi to support cameras, access control and everyday connectivity." },
-  { name: "Gate motors", cat: "p", icon: "gate", short: "Installation, servicing and repairs.", long: "Installation, servicing, repairs and replacement, including remote programming, safety beams and battery checks." },
+  { name: "Garage doors and gate motors", cat: "p", icon: "gate", short: "Installation, servicing and repairs.", long: "Installation, servicing, repairs and replacement of garage doors and gate motors, including remote programming, safety beams and battery checks." },
   { name: "Electric fencing", cat: "p", icon: "bolt", short: "Boundary fencing, repairs and fault finding.", long: "Installation, repairs and maintenance for property boundaries, including energiser checks, wiring repairs, insulators and fault finding." },
   { name: "Electrical", cat: "p", icon: "plug", short: "Lighting, plugs, switches and distribution boards.", long: "Electrical installations, upgrades, repairs and fault finding, with supplies assessed for the safe running of security and automation equipment." },
   { name: "Solar and backup power", cat: "p", icon: "sun", short: "Panels, inverters and batteries.", long: "Solar panels, inverters and battery storage, sized around your equipment loads, essential circuits and the operating time you need." },
@@ -46,7 +46,7 @@ export const FAQ = [
 
 export const QUOTE_CODE: Record<string, string> = {
   "CCTV surveillance": "CCTV", "Access control and biometrics": "ACCESS", "Security alarms and intercoms": "ALARM",
-  "Networking and Wi-Fi": "NET", "Gate motors": "GATE", "Electric fencing": "FENCE", Electrical: "ELEC",
+  "Networking and Wi-Fi": "NET", "Garage doors and gate motors": "GATE", "Gate motors": "GATE", "Electric fencing": "FENCE", Electrical: "ELEC",
   "Solar and backup power": "SOLAR", "Online community watch": "CCTV",
 };
 

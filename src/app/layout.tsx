@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: { default: "Reagaleano Electrical and Systems", template: "%s – Reagaleano" },
-  description: "CCTV, access control, gate motors, electric fencing, networking and solar backup power for residential, commercial and industrial properties.",
+  description: "CCTV, access control, garage doors, gate motors, electric fencing, networking and solar backup power for residential, commercial and industrial properties.",
 };
 export const viewport: Viewport = { width: "device-width", initialScale: 1, viewportFit: "cover", themeColor: "#ffffff" };
 

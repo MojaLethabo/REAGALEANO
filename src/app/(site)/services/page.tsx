@@ -3,7 +3,7 @@ import Link from "next/link";
 import Icon from "@/components/Icon";
 import { CATS, SERVICES, type Cat } from "@/lib/content";
 
-export const metadata: Metadata = { title: "Services", description: "CCTV, access control, alarms, networking, gate motors, electric fencing, electrical, solar and backup power, community watch and 24-hour support." };
+export const metadata: Metadata = { title: "Services", description: "CCTV, access control, alarms, networking, garage doors and gate motors, electric fencing, electrical, solar and backup power, community watch and 24-hour support." };
 
 export default function Services() {
   return (

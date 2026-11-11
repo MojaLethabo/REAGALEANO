@@ -2,7 +2,7 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 
-export const uploadDir = () => process.env.UPLOAD_DIR || path.join(process.cwd(), "data", "uploads");
+export const uploadDir = () => process.env.UPLOAD_DIR || path.join(process.env.VERCEL ? "/tmp" : path.join(process.cwd(), "data"), "uploads");
 export const MIME = { jpg: "image/jpeg", png: "image/png", webp: "image/webp" } as const;
 export const NAME_RE = /^[a-f0-9]{32}\.(jpg|png|webp)$/;
 const MAX = 5 * 1024 * 1024;

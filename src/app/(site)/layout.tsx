@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import NavLinks from "@/components/NavLinks";
 import { company } from "@/lib/company";
 import { db } from "@/lib/db";
@@ -16,12 +17,10 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld).replace(/</g, "\\u003c") }} />
       <div className="util"><div className="wrap">
-        <span>Call now: <a href={telHref(co.sitePhone)}><b>{co.sitePhone}</b></a></span>
-        <span>24-hour support{co.hours ? ` · ${co.hours}` : ""}</span>
         <Link className="utilbtn" href="/contact">Contact now</Link>
       </div></div>
       <header className="top"><div className="wrap">
-        <Link className="brand" href="/"><span className="mk" aria-hidden="true">R</span><span><b>REAGALEANO</b><small>Electrical and Systems</small></span></Link>
+        <Link className="brand" href="/"><Image className="logo" src="/logo.png" alt="Reagaleano Electrical, Systems and Automation" width={1190} height={674} priority /></Link>
         <NavLinks links={links} />
         <Link className="btn sm" href="/contact">Request a quote</Link>
       </div></header>

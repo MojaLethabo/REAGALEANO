@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { requireRole } from "@/lib/session";
 import { logout } from "@/app/login/actions";
 import PanelNav from "@/components/PanelNav";
@@ -9,7 +10,7 @@ export default async function OwnerLayout({ children }: { children: React.ReactN
   return (
     <div className="app">
       <aside className="side">
-        <div className="brand"><span className="mk" aria-hidden="true">R</span><span><b>Reagaleano</b><small>Business Platform</small></span></div>
+        <div className="brand"><span className="mk lg"><Image src="/logo-mark.png" alt="" width={415} height={417} /></span><span><b>Reagaleano</b><small>Business Platform</small></span></div>
         <div className="sidelabel">MAIN</div>
         <PanelNav links={[
           ["/owner", "Dashboard", "home"], ["/owner/requests", "Requests", "inbox"], ["/owner/quotes", "Quotations", "doc"],

@@ -138,7 +138,7 @@ declare global {
 
 export function db(): Db {
   if (!globalThis.__rgDb) {
-    const file = process.env.DATABASE_FILE || path.join(process.cwd(), "data", "reagaleano.db");
+    const file = process.env.DATABASE_FILE || path.join(process.env.VERCEL ? "/tmp" : path.join(process.cwd(), "data"), "reagaleano.db");
     fs.mkdirSync(path.dirname(file), { recursive: true });
     const raw = new DatabaseSync(file);
     raw.exec("PRAGMA journal_mode = WAL; PRAGMA foreign_keys = ON;");

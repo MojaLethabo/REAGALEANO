@@ -6,7 +6,7 @@ import SitePlan from "./SitePlan";
 const SLIDES = [
   { focus: "cam" as const, title: "Fast, reliable security installation", text: "CCTV, access control, alarms and networking for residential complexes, commercial buildings and corporate premises." },
   { focus: "solar" as const, title: "All-in-one solar and backup power", text: "Inverters, batteries and solar sized around your essential loads, so cameras, gates and alarms keep running through outages." },
-  { focus: "perimeter" as const, title: "Gates and fencing that keep working", text: "Gate motors and electric fencing installed, repaired and maintained, with safety beams, battery backup and 24-hour fault support." },
+  { focus: "perimeter" as const, title: "Gates and fencing that keep working", text: "Garage doors, gate motors and electric fencing installed, repaired and maintained, with safety beams, battery backup and 24-hour fault support." },
 ];
 
 export default function HeroSlider({ phone, tel }: { phone: string; tel: string }) {
